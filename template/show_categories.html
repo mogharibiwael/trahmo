@@ -1,0 +1,41 @@
+{%extends 'base2.html'%}
+
+{%load static%}
+{%load widget_tweaks%}
+{%block title%}login{%endblock%}
+{%block username%}wael{%endblock%}
+{%block brecumb%}
+عرض الفئات
+{%endblock%}
+{%block content%}
+
+   <div class=" mt-5 " >
+    <div class="main-content p-5" style="background-color: rgb(240, 239, 239) !important;" dir="rtl">
+     
+       
+        <table id="files_list" class="table table-striped dt-responsive " >
+    
+           
+            <div class="d-flex justify-content-end my-3">
+                <a href="{%url 'add_category'%}" class="btn btn-primary">اضافة منتج</a>
+              </div>
+           
+                    <thead class="thead_dark">
+                        <tr>
+                            <th class="th_text text-center">اسم الفئة</th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {%for category in categories%}
+                        <tr >
+                            <td>{{ category.name }}</td>
+                        
+                        </tr>
+                         {%endfor%}
+                    </tbody>
+                </table>
+          </div>
+   </div>
+
+{%endblock%}

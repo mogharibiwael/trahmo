@@ -1,0 +1,67 @@
+{%extends 'base2.html'%}
+{% load mathfilters %}
+{%load static%}
+{%load widget_tweaks%}
+{%block title%}login{%endblock%}
+{%block username%}wael{%endblock%}
+{%block brecumb%}
+ادارة التبرعات
+{%endblock%}
+{%block content%}
+
+   <div class=" mt-5 " >
+
+    <div class="main-content p-5" style="background-color: rgb(255, 255, 255) !important;" dir="rtl">
+  
+       <div style="height: 80px; "></div>
+
+        <div style="background-color: #e8e8e8 !important; padding: 10px;border-radius: 10px;">
+
+            <table class="table align-middle mb-0" style="margin-top: 30px !important;">
+                <thead class="bg-light">
+                  <tr >
+                    <th>الاسم</th>
+                    <th>المستفيد</th>
+                    <th>المبلغ</th>
+                    <th>المتبقي</th>
+                    <th>المدفوع</th>
+                    <th>العمليات</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {%for tabraa in tabrat %}
+                  <tr  style="color: #000;">
+                    <td>
+                      <div class="d-flex align-items-center">
+                        <div class="ms-3">
+                          <p class="fw-bold mb-1">{{tabraa.state.name}}</p>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <p class="fw-normal mb-1">{{tabraa.benficiary.name}}</p>
+                    </td>
+                    <td>
+                        <span class="badge bg-danger " style="font-size: 15px;">{{tabraa.state.amount}}</span>
+                    </td>
+                    <td>
+                        <span class="badge bg-warning " style="font-size: 15px;">
+                               {{ tabraa.state.amount|sub:tabraa.paid }}</span>
+                    </td>
+                    <td>
+                        <span class="badge bg-success " style="font-size: 15px;">{{tabraa.paid}}</span>
+                    </td>
+                    <td>
+                        <a  class="btn btn-primary" href="{%url 'tabraa_details' tabraa.id%}">تفاصيل</a>
+                    </td>
+                  </tr>
+                  {%endfor%}
+                </tbody>
+              </table>
+        </div>
+          </div>
+   </div>
+
+
+
+{%endblock%}

@@ -1,0 +1,43 @@
+{%extends 'base2.html'%}
+
+{%load static%}
+{%load widget_tweaks%}
+{%block title%}login{%endblock%}
+{%block username%}wael{%endblock%}
+{%block brecumb%}
+عرض الحالات
+{%endblock%}
+{%block content%}
+
+   <div class=" mt-5 " >
+    <div class="main-content p-5" style="background-color: rgb(240, 239, 239) !important;" dir="rtl">
+        <table id="files_list" class="table table-striped dt-responsive " >
+            <div class="d-flex justify-content-end my-3">
+                <a href="{%url 'add_state'%}" class="btn btn-primary">اضافة حالة</a>
+              </div>
+                    <thead class="thead_dark">
+                        <tr>
+                            <th class="th_text text-center">اسم الحالة</th>
+                            <th class="th_text text-center">العمليات</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {%for state in states%}
+                        <tr >
+                            <td>{{ state.name }}</td>
+                     
+                            <td>
+                                <a class="btn btn-danger" href="{%url 'delete_state' state.id%}">حـذف</a>
+                                <a  class="btn btn-primary" href="{%url 'edit_state' state.id%}">تعديل</a>
+                                <a  class="btn btn-primary" href="{%url 'activate_state' state.id%}">تفعيل</a>
+                                <a  class="btn btn-primary" href="{%url 'state_from_app_details' state.id%}">تفاصيل</a>
+                            
+                            </td>
+                        </tr>
+                         {%endfor%}
+                    </tbody>
+                </table>
+          </div>
+   </div>
+
+{%endblock%}

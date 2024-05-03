@@ -1,0 +1,49 @@
+{% extends 'base2.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block title %}Edit Product{% endblock %}
+{% block brecumb %}
+<h3>تعديل منتج</h3>
+{% endblock %}
+{% block content %}
+<div class="container">
+  <div class="row justify-content-center mt-5">
+    <div class="col-md-8 col-lg-8">
+      <div class="card p-5">
+        <form method="POST" enctype="multipart/form-data" novalidate>
+          {% csrf_token %}
+          {% for field in form %}
+            <div class="form-group">
+              {{ field.label_tag }}
+              {% if field.field.widget.input_type != 'file' %}
+                {{ field|add_class:"form-control" }}
+                {% if field.errors %}
+                  <div class="invalid-feedback">{{ field.errors }}</div>
+                {% endif %}
+              {% else %}
+                {{ field }}
+              {% endif %}
+            </div>
+          {% endfor %}
+          <button type="submit" class="btn btn-success btn-lg btn-block w-100 mt-3">Save</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Pre-populate form fields with existing product data
+  window.addEventListener('DOMContentLoaded', (event) => {
+    const productData = JSON.parse('{{ product_data|escapejs }}');
+    const formFields = document.querySelectorAll('.form-control');
+    for (let i = 0; i < formFields.length; i++) {
+      const fieldName = formFields[i].name;
+      if (productData.hasOwnProperty(fieldName)) {
+        formFields[i].value = productData[fieldName];
+      }
+    }
+  });
+</script>
+{% endblock %}

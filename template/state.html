@@ -1,0 +1,41 @@
+{%extends 'base2.html'%}
+
+{%load static%}
+{%load widget_tweaks%}
+{%block title%}orders{%endblock%}
+
+{%block username%}wael{%endblock%}
+
+{%block brecumb%}
+ادارة الحالات
+{%endblock%}
+
+{%block content%}
+
+<div class="row  my-5 justify-content-between m-auto" style="direction: rtl;display: flex;justify-content: flex-end;">
+  <div class="col-lg-5 col-md-5 col-sm-12 card mt-3" style="order: 2;">
+    <div class="card-body">
+      <h5 class="card-title">اضافة حالة</h5>
+      <p class="card-text">اضافة حالة الى التطبيق</p>
+      <a href="{%url 'add_state'%}" class="btn btn-primary btn-block w-100">اضافة</a>
+    </div>
+  </div>
+  
+  <div class="col-lg-5 col-md-5 col-sm-12 card mt-3" style="order: 1;">
+    <div class="card-body">
+      <h5 class="card-title">عرض الحالات</h5>
+      <p class="card-text">عرض جميع الحالات</p>
+      <a href="{%url 'show_state'%}" class="btn btn-primary w-100">عرض</a>
+    </div>
+  </div>
+
+  <div class="col-lg-5 col-md-5 col-sm-12 card mt-3" style="order: 1;">
+    <div class="card-body">
+      <h5 class="card-title"> عرض الحالات المضافة من التطبيق</h5>
+      <p class="card-text">عرض جميع الحالات المضافة من التطبيق</p>
+      <a href="{%url 'state_from_app'%}" class="btn btn-primary w-100">عرض</a>
+    </div>
+  </div>
+
+
+{%endblock%}

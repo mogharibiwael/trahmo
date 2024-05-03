@@ -1,0 +1,33 @@
+{%extends 'base2.html'%}
+
+{%load static%}
+{%load widget_tweaks%}
+{%block title%}orders{%endblock%}
+
+{%block username%}wael{%endblock%}
+
+{%block brecumb%}
+ادارة المنتجات
+{%endblock%}
+
+{%block content%}
+
+<div class="row  my-5 justify-content-between m-auto" style="direction: rtl;display: flex;justify-content: flex-end;">
+  <div class="col-lg-5 col-md-5 col-sm-12 card mt-3" style="order: 2;">
+    <div class="card-body">
+      <h5 class="card-title">اضافة فئة</h5>
+      <p class="card-text">اضافة فئات الى التطبيق</p>
+      <a href="{%url 'add_category'%}" class="btn btn-primary btn-block w-100">اضافة</a>
+    </div>
+  </div>
+  
+  <div class="col-lg-5 col-md-5 col-sm-12 card mt-3" style="order: 1;">
+    <div class="card-body">
+      <h5 class="card-title">عرض الفئات</h5>
+      <p class="card-text">عرض جميع الفئات</p>
+      <a href="{%url 'show_category'%}" class="btn btn-primary w-100">عرض</a>
+    </div>
+  </div>
+
+
+{%endblock%}

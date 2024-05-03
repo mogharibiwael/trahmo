@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+{%load static%}
+
+<head>
+    <meta charset="UTF-8">
+    <title>{%block title%}{%endblock%}</title>
+    <link rel="stylesheet" href="{%static 'css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{%static 'vendor/fontawesome-free-6.4.0-web/css/all.css'%}">
+    <link rel="stylesheet" href="{%static 'css/dataTables.min.css'%}">
+    <link rel="stylesheet" type="text/css" href="{%static 'css/style.css'%}">
+    <link rel="stylesheet" type="text/css" href="{%static 'css/alertify.min.css'%}">
+    <link rel="stylesheet" type="text/css" href="{%static 'css/themes/default.min.css'%}">
+    <script src="{%static 'js/chart.js' %}"></script>
+
+</head>
+<style>
+  .nav-pills li a:hover{
+    background-color: #F8BA05;
+  }
+  body{
+    padding-right: 0 !important;
+    margin: 0 !important;
+  }
+</style>
+<body style="overflow-x: hidden;">
+<div class="container">
+  <div class="row m-0 p-0">
+    <div class="col-sm-9 col-md-9 col-lg-9 ">
+      <div class="main-content-header">
+        <div class="header_wrapper">
+          <div class="header-title">
+            
+            <span>
+{%block brecumb%}{%endblock%}
+            </span>
+          </div>
+        </div>
+      </div>
+      {%block content%}
+  
+  {%endblock%}
+    </div>
+    <div class="col-sm-3 col-md-3 col-lg-3  sidebar m-0 p-0  "  dir="rtl">
+      <div class="container-fluid" >
+        <div class="row">
+          <div class="col-2 bg-dark  d-flex flex-column justify-content-between w-75" style="height: 150vh !important;overflow: hidden;">
+            <div class="mt-4">
+              <a href="#" class="text-white d-none d-sm-inline text-decoration-none d-flex  me-4" role="button">
+                <i class="fa fa-bars ms-2"></i>
+                <span class="fs-5"> تراحموا</span>
+              </a>
+              <hr class="text-white"/>
+              <ul class="nav nav-pills flex-column mt-2 mt-sm-0 text-right mr-0 pr-0" id="menu">
+                <li class="nav-item">
+                  <a href="{%url 'show_tabraa'%}" class="nav-link text-white d-flex " aria-current="page">
+                    <i class="fa fa-home ms-2"></i>
+                    <span class="ms-2 d-none d-sm-inline">الصفحة الرئيسية</span>
+                  </a>
+                </li>
+                <li class="nav-item disabled">
+                  <a href="{%url 'state'%}"  class="nav-link text-white d-flex align-items-center" aria-current="page">
+                    <i class="fa fa-table ms-2"></i>
+                    <span class="ms-2 d-none d-sm-inline">الحالات</span>
+                  </a>
+                
+                </li>
+                <li class="nav-item">
+                  <a href="{%url 'tabraa'%}" class="nav-link text-white d-flex align-items-center" aria-current="page">
+                    <i class="fa fa-users ms-2"></i>
+                    <span class="ms-2 d-none d-sm-inline">التبرعات  </span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{%url 'category' %}" class="nav-link text-white d-flex align-items-center" aria-current="page">
+                    <i class="fa fa-users ms-2"></i>
+                    <span class="ms-2 d-none d-sm-inline">الفئات </span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{%url 'benficiary' %}" class="nav-link text-white d-flex align-items-center" aria-current="page">
+                    <i class="fa fa-users ms-2"></i>
+                    <span class="ms-2 d-none d-sm-inline"> المستفيدين</span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="#" class="nav-link text-white d-flex align-items-center" aria-current="page">
+                    <i class="fa fa-users ms-2"></i>
+                    <span class="ms-2 d-none d-sm-inline">#</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+
+
+{%block footer%}
+<footer class="bg-light fixed-bottom text-center text-lg-start">
+  <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    © 2020 Copyright:
+    <a class="text-dark" href="#">#</a>
+  </div>
+  <!-- Copyright -->
+</footer>
+{%endblock%}
+<script src="{%static 'js/bootstrap.min.js' %}"></script>
+<script src="{%static 'js/jquery-3.7.0.min.js' %}"></script>
+<script src="{%static 'js/datatables.min.js' %}"></script>
+<script src="{%static 'js/js.js' %}"></script>
+<script src="{%static 'js/alertify.min.js' %}"></script>
+
+{% if messages %}
+    {% for message in messages %}
+      {% if message.tags == 'success' %}
+<script>
+  
+        alertify.set('notifier', 'position', 'top-right');
+        alertify.success('{{ message }}');
+    
+  
+</script>
+{% else %}
+<script>
+  alertify.set('notifier', 'position', 'top-right');
+  alertify.error('{{ message }}');
+  </script>  
+{% endif %}
+{% endfor %}
+{% endif %}
+
+</body>
+</html>
